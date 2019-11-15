@@ -10,7 +10,7 @@ struct cert_list_st *load_cert_list(const char *dname);
 
 int main(int argc, char *argv[])
 {
-
+  struct cert_list_st *list = load_cert_list("certs");
 
   return 0;
 }
