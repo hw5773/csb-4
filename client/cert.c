@@ -322,7 +322,7 @@ unsigned char *get_message_from_certificate(struct cert_entry_st *entry, int *le
 {
   fstart("entry: %p, len: %p", entry, len);
   const ASN1_ITEM *it;
-  unsigned char *ret;
+  char *ret;
   void *asn;
   X509 *x;
   assert(entry);
