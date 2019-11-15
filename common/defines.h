@@ -17,7 +17,7 @@
 #define NO_TRUSTED_ROOT 4
 
 #define BUF_SIZE 4096
-#define NUM_OF_PROBLEMS 3
+#define NUM_OF_PROBLEMS 5
 #define NUM_OF_MOD 3
 #define MAX_KEY_LENGTH 128
 #define MAX_CHALLENGE_NUM 10000
@@ -25,7 +25,7 @@
 #define MAX_HOST_LEN 256
 #define MAX_FILE_NAME_LEN 256
 #define MAX_THREADS 100
-#define MAX_PROBLEMS 10
+#define MAX_PROBLEMS 5
 #define MAX_NUM_OF_CERTS 5
 #define TIMEOUT 10
 #define HASH_ALGO NID_sha256
