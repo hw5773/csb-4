@@ -1,4 +1,5 @@
 #include "cert.h"
+#include "rsa.h"
 #include "../include/debug.h"
 #include <stdlib.h>
 #include <string.h>
