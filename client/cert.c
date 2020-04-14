@@ -108,7 +108,7 @@ int add_buffer_to_list(unsigned char *buf, int len, struct cert_list_st *list)
   fstart("buf: %p, len: %d, list: %p", buf, len, list);
   int ret;
   struct cert_entry_st *entry;
-  unsigned char *p;
+  const unsigned char *p;
   X509 *x;
 
   assert(buf);
@@ -186,6 +186,30 @@ struct cert_entry_st *get_cert_entry_from_list(int num, struct cert_list_st *lis
   for (i=0; i<num; i++)
   {
     ret = ret->next;
+  }
+
+  ffinish("ret: %p", ret);
+  return ret;
+}
+
+struct cert_entry_st *get_issuer_cert_entry_from_list(struct cert_entry_st *cert, struct cert_list_st *list)
+{
+  fstart("cert: %p, list: %p", cert, list);
+  assert(cert != NULL);
+  assert(list != NULL);
+
+  int i, num;
+  struct cert_entry_st *ret, *tmp;
+
+  ret = NULL;
+  num = get_num_of_entry_in_list(list);
+  for (i=0; i<num; i++)
+  {
+    tmp = get_cert_entry_from_list(i, list);
+    if (is_name_same(get_issuer_from_certificate(cert), get_subject_from_certificate(tmp)) == SUCCESS)
+    {
+      ret = tmp;
+    }
   }
 
   ffinish("ret: %p", ret);
@@ -322,7 +346,7 @@ unsigned char *get_message_from_certificate(struct cert_entry_st *entry, int *le
 {
   fstart("entry: %p, len: %p", entry, len);
   const ASN1_ITEM *it;
-  char *ret;
+  unsigned char *ret;
   void *asn;
   X509 *x;
   assert(entry);
