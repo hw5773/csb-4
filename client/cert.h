@@ -37,6 +37,8 @@ int add_buffer_to_list(unsigned char *buf, int len, struct cert_list_st *list);
 int add_cert_entry_to_list(struct cert_entry_st *entry, struct cert_list_st *list);
 unsigned char get_num_of_entry_in_list(struct cert_list_st *list);
 struct cert_entry_st *get_cert_entry_from_list(int num, struct cert_list_st *list);
+struct cert_entry_st *get_issuer_cert_entry_from_list(struct cert_entry_st *cert, 
+    struct cert_list_st *list);
 void print_cert_list(struct cert_list_st *list);
 
 struct cert_entry_st *init_cert_entry(X509 *x);
