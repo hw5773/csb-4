@@ -17,7 +17,7 @@ int tcp_send(int fd, char *buf, int len)
   sent = 0; offset = 0;
   while (sent < len && curr < limit)
   {
-    offset = write(fd, buf + offset, len - offset);
+    offset = write(fd, buf + sent, len - sent);
     if (offset > 0)
       sent += offset;
     else if (offset == 0) 
@@ -55,7 +55,7 @@ int tcp_recv(int fd, char *buf, int len)
   rcvd = 0; offset = 0;
   while (rcvd < len && curr < limit)
   {
-    offset = read(fd, buf + offset, len - offset);
+    offset = read(fd, buf + rcvd, len - rcvd);
     if (offset > 0)
       rcvd += offset;
     else if (offset == 0) 
